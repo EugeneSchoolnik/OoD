@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Roboto Mono", monospace;
+  font-size: 16px;
+}
+
+.app {
+  height: 100vh;
+  background: $darkGray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  & > div {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+  }
+}
+
+:global {
+  .btn {
+    display: flex;
+    align-items: center;
+    background: $gray;
+    padding: 0.5rem 1.5rem;
+    transition: 150ms;
+    &.primary {
+      border: 2px solid $blue;
+    }
+    &:hover {
+      background: $lightGray;
+    }
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    background: $dark;
+    padding: 1rem;
+    margin: 1rem auto;
+    box-shadow: 0 0 4px 1px $light;
+    border-radius: 1rem;
+    label {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin-bottom: 0.5rem;
+      input:not([type="radio"]):not([type="checkbox"]) {
+        background: none;
+        border-bottom: 2px solid $lightGray;
+        padding: 4px;
+        font-size: 14px;
+        transition: 150ms;
+        &:hover,
+        &:focus {
+          border-bottom: 2px solid $blue;
+        }
+      }
+      input[type="checkbox"] {
+        position: relative;
+        margin: 5px;
+        margin-right: auto;
+        height: 24px;
+        cursor: pointer;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: $lightGray;
+        }
+        &:checked::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #fff;
+        }
+      }
+      select {
+        width: 300px;
+        background: $light;
+        margin: 4px 0;
+        border-radius: 0.5rem;
+        option {
+          background: $darkGray;
+          font-size: 14px;
+        }
+      }
+      span {
+        color: $red;
+        font-size: 14px;
+        text-align: right;
+        line-height: 16px;
+        height: 14px;
+      }
+    }
+    p {
+      width: 300px;
+      text-align: center;
+      margin: 0.5rem 0;
+      padding: 0.25rem;
+      border: 2px solid $red;
+      font-size: 14px;
+      &:empty {
+        display: none;
+      }
+    }
+    button {
+      width: 100%;
+      padding: 0.5rem;
+      background: $gray;
+      cursor: pointer;
+      transition: 150ms;
+      margin-top: 0.5rem;
+      &:hover {
+        background: $blue;
+      }
+    }
+  }
+}

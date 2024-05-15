@@ -1,0 +1,24 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  ul {
+    list-style: none;
+    margin: 1rem auto;
+    margin-top: 2rem;
+    li {
+      margin-bottom: 0.5rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    hr {
+      height: 2px;
+      background: $light2;
+      margin: 0.7rem 0;
+    }
+  }
+}
