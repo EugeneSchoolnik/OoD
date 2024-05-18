@@ -19,6 +19,10 @@
   import navigation from "./utils/navigation";
 
   onMount(() => {
+    window.oncontextmenu = (e) => {
+      e.preventDefault();
+    };
+
     server.get("/auth").then((res) => {
       user.set(res.data);
     });

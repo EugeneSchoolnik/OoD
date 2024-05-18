@@ -6,6 +6,7 @@
   import type { ICustomer } from "./types";
   import server from "../../utils/axios";
   import { user } from "../../store/user";
+  import { createReport } from "../../utils/report";
 
   export let params: Record<string, string> = {};
 
@@ -17,6 +18,19 @@
       customers = params.id ? ([customers] as any) : customers.reverse();
     });
   });
+
+  const onReport = () => {
+    createReport(
+      "customers",
+      [
+        ["id", 20],
+        ["name", 25],
+        ["lastname", 40],
+        ["email", 60],
+      ],
+      customers
+    );
+  };
 </script>
 
 <div class={s.customers}>
@@ -56,4 +70,7 @@
     ]}
     data={customers}
   />
+  {#if $user.group !== "user"}
+    <button class="btn" on:click={onReport}>Report</button>
+  {/if}
 </div>

@@ -6,6 +6,7 @@
   import server from "../../utils/axios";
   import type { IEstateObject } from "./types";
   import { user } from "../../store/user";
+  import { createReport } from "../../utils/report";
 
   let estateObjects: IEstateObject[] = [];
 
@@ -14,6 +15,20 @@
       estateObjects = res.data.data.reverse();
     });
   });
+
+  const onReport = () => {
+    createReport(
+      "Estate_objects",
+      [
+        ["id", 20],
+        ["name", 20],
+        ["address", 80],
+        ["area", 20],
+        ["price", 20],
+      ],
+      estateObjects
+    );
+  };
 </script>
 
 <div class={s.estateobjects}>
@@ -52,4 +67,7 @@
     ]}
     data={estateObjects}
   />
+  {#if $user.group !== "user"}
+    <button class="btn" on:click={onReport}>Report</button>
+  {/if}
 </div>

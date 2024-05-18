@@ -6,6 +6,7 @@
   import type { IAnnouncement } from "./types";
   import server from "../../utils/axios";
   import { user } from "../../store/user";
+  import { createReport } from "../../utils/report";
 
   export let params: Record<string, string> = {};
 
@@ -23,6 +24,23 @@
       });
     });
   });
+
+  const onReport = () => {
+    createReport(
+      "Announcements",
+      [
+        ["id", 20],
+        ["id_object", 20],
+        ["id_customer", 20],
+        ["type", 25],
+        ["area", 20],
+        ["price", 20],
+        ["status", 15],
+        ["date", 30],
+      ],
+      announcements
+    );
+  };
 </script>
 
 <div class={s.announcements}>
@@ -64,4 +82,7 @@
     ]}
     data={announcements}
   />
+  {#if $user.group !== "user"}
+    <button class="btn" on:click={onReport}>Report</button>
+  {/if}
 </div>
